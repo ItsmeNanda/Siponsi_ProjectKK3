@@ -150,46 +150,44 @@ class _MainScreenState extends State<MainScreen> {
 class CardList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return ListView(
-      children: [
-        Padding(
-          padding: EdgeInsets.all(16.0),
-          child: Text(
-            'Data Absen Guru',
-            style: TextStyle(fontSize: 24.0, fontWeight: FontWeight.w900),
+    return Scaffold(
+      body: CustomScrollView(
+        slivers: [
+          SliverAppBar(
+            title: Text(
+              'Data Absen Guru',
+              style: TextStyle(fontSize: 24.0, fontWeight: FontWeight.w900),
+            ),
           ),
-        ),
-        MyCard(
-          title: 'Ilmu Pengetahuan Alam',
-          nis: '54545454',
-          content: 'Omar Nadiv',
-          color: Colors.black,
-        ),
-        MyCard(
-          title: 'Matematika',
-          nis: '54545454',
-          content: 'Nanda Bagus P',
-          color: Colors.black,
-        ),
-        MyCard(
-          title: 'Pelajaran Agama Islam',
-          nis: '54545454',
-          content: 'Nabella Rahmatus Sania',
-          color: Colors.black,
-        ),
-        MyCard(
-          title: 'Bahasa Indonesia',
-          nis: '54545454',
-          content: 'Osha Alfida',
-          color: Colors.black,
-        ),
-        MyCard(
-          title: 'PPKn',
-          nis: '54545454',
-          content: 'Pinka Ratna',
-          color: Colors.black,
-        ),
-      ],
+          SliverToBoxAdapter(
+            child: Padding(
+              padding: EdgeInsets.all(16.0),
+              child: TextFormField(
+                decoration: InputDecoration(
+                  labelText: 'Search',
+                  prefixIcon: Icon(Icons.search),
+                  border: OutlineInputBorder(),
+                ),
+                onChanged: (value) {},
+              ),
+            ),
+          ),
+          SliverList(
+            delegate: SliverChildBuilderDelegate(
+              (BuildContext context, int index) {
+                return MyCard(
+                  title: 'Keterangan',
+                  nis: '54545454',
+                  content: 'Guru',
+                  color: Colors.black,
+                );
+              },
+              childCount:
+                  10, // You can replace this with the actual number of cards
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
@@ -253,46 +251,49 @@ class MyCard extends StatelessWidget {
 class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return ListView(
-      children: [
-        Padding(
-          padding: EdgeInsets.all(16.0),
-          child: Text(
-            'Data Data Guru',
-            style: TextStyle(fontSize: 24.0, fontWeight: FontWeight.w900),
+    return Scaffold(
+      body: CustomScrollView(
+        slivers: [
+          SliverAppBar(
+            title: Text(
+              'Data Data Guru',
+              style: TextStyle(fontSize: 24.0, fontWeight: FontWeight.w900),
+            ),
+            actions: [
+              IconButton(
+                icon: Icon(Icons.search),
+                onPressed: () {},
+              ),
+            ],
           ),
-        ),
-        MyCard(
-          title: 'Ilmu Pengetahuan Alam',
-          nis: '54545454',
-          content: 'Omar Nadiv',
-          color: Colors.black,
-        ),
-        MyCard(
-          title: 'Matematika',
-          nis: '54545454',
-          content: 'Nanda Bagus P',
-          color: Colors.black,
-        ),
-        MyCard(
-          title: 'Pelajaran Agama Islam',
-          nis: '54545454',
-          content: 'Nabella Rahmatus Sania',
-          color: Colors.black,
-        ),
-        MyCard(
-          title: 'Bahasa Indonesia',
-          nis: '54545454',
-          content: 'Osha Alfida',
-          color: Colors.black,
-        ),
-        MyCard(
-          title: 'PPKn',
-          nis: '54545454',
-          content: 'Pinka Ratna',
-          color: Colors.black,
-        ),
-      ],
+          SliverToBoxAdapter(
+            child: Padding(
+              padding: EdgeInsets.all(16.0),
+              child: TextFormField(
+                decoration: InputDecoration(
+                  labelText: 'Search',
+                  prefixIcon: Icon(Icons.search),
+                  border: OutlineInputBorder(),
+                ),
+                onChanged: (value) {},
+              ),
+            ),
+          ),
+          SliverList(
+            delegate: SliverChildBuilderDelegate(
+              (BuildContext context, int index) {
+                return MyCard(
+                  title: 'Keterangan $index',
+                  nis: '54545454',
+                  content: 'Guru $index',
+                  color: Colors.black,
+                );
+              },
+              childCount: 5,
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
