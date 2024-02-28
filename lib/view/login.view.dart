@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:login_project/utils/global.colors.dart';
+import 'package:login_project/view/dashboard.admin.dart';
 // import 'package:login_project/view/widgets/button.global.dart';
 import 'package:login_project/view/widgets/text.form.global.dart';
 import 'package:login_project/view/dashboard.view.dart'; // Import dashboard_view.dart
+import 'package:login_project/view/dashboard.admin.dart';
 
 class LoginView extends StatelessWidget {
   LoginView({Key? key}) : super(key: key);
@@ -102,12 +104,10 @@ class LoginView extends StatelessWidget {
                 ),
                 const SizedBox(height: 70),
 
-                // Use ElevatedButton for navigation
                 Align(
                   alignment: Alignment.bottomCenter,
                   child: Padding(
-                    padding: EdgeInsets.only(
-                        bottom: 50), // Sesuaikan jarak ke bawah yang diinginkan
+                    padding: EdgeInsets.only(bottom: 20),
                     child: ElevatedButton(
                       onPressed: () {
                         // Navigate to Dashboard screen
@@ -129,7 +129,39 @@ class LoginView extends StatelessWidget {
                         alignment: Alignment.center, // Posisi teks di tengah
                       ),
                       child: Text(
-                        'Login',
+                        'Login Siswa',
+                        style: TextStyle(fontSize: 18), // Gaya teks pada tombol
+                      ),
+                    ),
+                  ),
+                ),
+                Align(
+                  alignment: Alignment.bottomCenter,
+                  child: Padding(
+                    padding: EdgeInsets.only(bottom: 50),
+                    child: ElevatedButton(
+                      onPressed: () {
+                        // Navigate to Dashboard screen
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => Dashboard_admin()),
+                        );
+                      },
+                      style: ElevatedButton.styleFrom(
+                        primary: Colors.black, // Warna latar belakang tombol
+                        onPrimary: Colors.white, // Warna teks pada tombol
+                        padding: EdgeInsets.symmetric(
+                            vertical: 15), // Padding tombol
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(
+                              10.0), // Sudut yang tidak terlalu bulat
+                        ),
+                        minimumSize: Size(double.infinity, 50), // Lebar penuh
+                        alignment: Alignment.center, // Posisi teks di tengah
+                      ),
+                      child: Text(
+                        'Login Guru',
                         style: TextStyle(fontSize: 18), // Gaya teks pada tombol
                       ),
                     ),

@@ -3,7 +3,7 @@ import 'package:login_project/view/login.view.dart';
 import 'package:login_project/view/widgets/text.form.global.dart';
 import 'package:login_project/utils/global.colors.dart';
 
-class Dashboard extends StatelessWidget {
+class Dashboard_admin extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -61,7 +61,7 @@ class _MainScreenState extends State<MainScreen> {
                           ),
                         ),
                         Text(
-                          'Omar Nadiv!',
+                          ' Admin!',
                           style: TextStyle(
                             color: Colors.white,
                             fontWeight: FontWeight.bold,
@@ -109,7 +109,7 @@ class _MainScreenState extends State<MainScreen> {
                         });
                       },
                       child: Text(
-                        'Home',
+                        'Data Guru',
                         style: TextStyle(color: Colors.white),
                       ),
                     ),
@@ -155,34 +155,39 @@ class CardList extends StatelessWidget {
         Padding(
           padding: EdgeInsets.all(16.0),
           child: Text(
-            'History Absen',
+            'Data Absen Guru',
             style: TextStyle(fontSize: 24.0, fontWeight: FontWeight.w900),
           ),
         ),
         MyCard(
-          title: '08 Januari 1998',
-          content: 'Selasa',
-          color: Colors.green,
+          title: 'Ilmu Pengetahuan Alam',
+          nis: '54545454',
+          content: 'Omar Nadiv',
+          color: Colors.black,
         ),
         MyCard(
-          title: '07 Januari 1998',
-          content: 'Senin',
-          color: Colors.green,
+          title: 'Matematika',
+          nis: '54545454',
+          content: 'Nanda Bagus P',
+          color: Colors.black,
         ),
         MyCard(
-          title: '04 Januari 1998',
-          content: 'Jumat',
-          color: Colors.green,
+          title: 'Pelajaran Agama Islam',
+          nis: '54545454',
+          content: 'Nabella Rahmatus Sania',
+          color: Colors.black,
         ),
         MyCard(
-          title: '03 Januari 1998',
-          content: 'Kamis',
-          color: Colors.red,
+          title: 'Bahasa Indonesia',
+          nis: '54545454',
+          content: 'Osha Alfida',
+          color: Colors.black,
         ),
         MyCard(
-          title: '02 Januari 1998',
-          content: 'Rabu',
-          color: Colors.yellow,
+          title: 'PPKn',
+          nis: '54545454',
+          content: 'Pinka Ratna',
+          color: Colors.black,
         ),
       ],
     );
@@ -191,11 +196,13 @@ class CardList extends StatelessWidget {
 
 class MyCard extends StatelessWidget {
   final String title;
+  final String nis;
   final String content;
   final Color color;
 
   MyCard({
     required this.title,
+    required this.nis,
     required this.content,
     required this.color,
   });
@@ -213,7 +220,19 @@ class MyCard extends StatelessWidget {
             child: Text(
               content,
               style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 24.0,
                 color: Colors.white,
+              ),
+            ),
+          ),
+          Padding(
+            padding: EdgeInsets.only(left: 16.0, right: 16.0, top: 16.0),
+            child: Text(
+              nis,
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 16.0,
               ),
             ),
           ),
@@ -221,7 +240,6 @@ class MyCard extends StatelessWidget {
             title: Text(
               title,
               style: TextStyle(
-                fontWeight: FontWeight.bold,
                 color: Colors.white,
               ),
             ),
@@ -233,176 +251,54 @@ class MyCard extends StatelessWidget {
 }
 
 class HomeScreen extends StatelessWidget {
-  final TextEditingController emailController = TextEditingController();
-  final TextEditingController passwordController = TextEditingController();
-
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SingleChildScrollView(
-        child: SafeArea(
-          child: Container(
-            width: double.infinity,
-            padding: const EdgeInsets.all(15.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const SizedBox(height: 35),
-                Text(
-                  'Username',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: GlobalColors.textColor,
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                const SizedBox(height: 10),
-
-                //Email Input
-                TextFormGlobal(
-                  controller: passwordController,
-                  text: 'Omar Nadiv',
-                  obscure: false,
-                  textInputType: TextInputType.emailAddress,
-                ),
-
-                const SizedBox(height: 35),
-                Text(
-                  'Absen',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: GlobalColors.textColor,
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-
-                const SizedBox(height: 10),
-                //Password Input
-                TextFormGlobal(
-                  controller: passwordController,
-                  text: 'Absen',
-                  textInputType: TextInputType.text,
-                  obscure: false,
-                ),
-                const SizedBox(height: 35),
-                Text(
-                  'Keterangan',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: GlobalColors.textColor,
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-
-                const SizedBox(height: 10),
-                //Password Input
-                TextFormGlobal(
-                  controller: passwordController,
-                  text: 'Keterangan',
-                  textInputType: TextInputType.text,
-                  obscure: false,
-                ),
-                const SizedBox(height: 10),
-
-                const SizedBox(height: 20),
-                Text(
-                  'Saya menyatakan dengan ini bahwa saya mengisi form ini dengan sejujur-jujurnya.',
-                  textAlign: TextAlign.left,
-                  style: TextStyle(color: GlobalColors.textColor, fontSize: 14),
-                ),
-                const SizedBox(height: 70),
-                // Use ElevatedButton for navigation
-                Align(
-                  alignment: Alignment.bottomCenter,
-                  child: Padding(
-                    padding: EdgeInsets.only(
-                        bottom: 50), // Sesuaikan jarak ke bawah yang diinginkan
-                    child: ElevatedButton(
-                      onPressed: () {
-                        // Navigate to Dashboard screen
-                        Navigator.pushReplacement(
-                          context,
-                          MaterialPageRoute(builder: (context) => Dashboard()),
-                        );
-                      },
-                      style: ElevatedButton.styleFrom(
-                        primary: Colors.black, // Warna latar belakang tombol
-                        onPrimary: Colors.white, // Warna teks pada tombol
-                        padding: EdgeInsets.symmetric(
-                            vertical: 15), // Padding tombol
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(
-                              10.0), // Sudut yang tidak terlalu bulat
-                        ),
-                        minimumSize: Size(double.infinity, 50), // Lebar penuh
-                        alignment: Alignment.center, // Posisi teks di tengah
-                      ),
-                      child: Text(
-                        'Kirim',
-                        style: TextStyle(fontSize: 18), // Gaya teks pada tombol
-                      ),
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-
-  Widget _buildFormGroup(
-      {required String labelText, required TextEditingController controller}) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
+    return ListView(
       children: [
-        Text(
-          labelText,
-          style: TextStyle(
-            fontSize: 16.0,
-            fontWeight: FontWeight.bold,
+        Padding(
+          padding: EdgeInsets.all(16.0),
+          child: Text(
+            'Data Data Guru',
+            style: TextStyle(fontSize: 24.0, fontWeight: FontWeight.w900),
           ),
         ),
-        SizedBox(height: 8.0),
-        TextFormField(
-          controller: controller,
-          decoration: InputDecoration(
-            border: OutlineInputBorder(),
-          ),
+        MyCard(
+          title: 'Ilmu Pengetahuan Alam',
+          nis: '54545454',
+          content: 'Omar Nadiv',
+          color: Colors.black,
+        ),
+        MyCard(
+          title: 'Matematika',
+          nis: '54545454',
+          content: 'Nanda Bagus P',
+          color: Colors.black,
+        ),
+        MyCard(
+          title: 'Pelajaran Agama Islam',
+          nis: '54545454',
+          content: 'Nabella Rahmatus Sania',
+          color: Colors.black,
+        ),
+        MyCard(
+          title: 'Bahasa Indonesia',
+          nis: '54545454',
+          content: 'Osha Alfida',
+          color: Colors.black,
+        ),
+        MyCard(
+          title: 'PPKn',
+          nis: '54545454',
+          content: 'Pinka Ratna',
+          color: Colors.black,
         ),
       ],
     );
   }
 }
 
-Widget _buildFormGroup(
-    {required String labelText, required TextEditingController controller}) {
-  return Column(
-    crossAxisAlignment: CrossAxisAlignment.start,
-    children: [
-      Text(
-        labelText,
-        style: TextStyle(
-          fontSize: 16.0,
-          fontWeight: FontWeight.bold,
-        ),
-      ),
-      SizedBox(height: 8.0),
-      TextFormField(
-        controller: controller,
-        decoration: InputDecoration(
-          border: OutlineInputBorder(),
-        ),
-      ),
-    ],
-  );
-}
-
 class SettingScreen extends StatelessWidget {
+  final TextEditingController passwordController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -426,7 +322,7 @@ class SettingScreen extends StatelessWidget {
                       Row(
                         children: [
                           Text(
-                            'Omar Nadiv',
+                            'Admin',
                             style: TextStyle(
                               color: Colors.black,
                               fontWeight: FontWeight.bold,
@@ -435,7 +331,7 @@ class SettingScreen extends StatelessWidget {
                         ],
                       ),
                       Text(
-                        'Guru',
+                        'Superuser',
                         style: TextStyle(
                           color: Color.fromARGB(255, 194, 194, 194),
                           fontWeight: FontWeight.bold,
@@ -456,7 +352,7 @@ class SettingScreen extends StatelessWidget {
                   ),
                 ],
               ),
-              SizedBox(height: 40),
+              SizedBox(height: 12),
               Card(
                 color: Colors.grey[200],
                 child: Padding(
@@ -464,14 +360,101 @@ class SettingScreen extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      _buildInfoRow('NIP', '123456789'),
-                      _buildDivider(),
-                      _buildInfoRow('TTL', 'Banyumas, 30 Juli 1970'),
-                      _buildDivider(),
-                      _buildInfoRow(
-                          'Alamat', 'Jl.Imam Bonjol, Sokaraja Lor, Sokaraja'),
-                      _buildDivider(),
-                      _buildInfoRow('Mapel', 'Ilmu Pengetahuan Alam (IPA)'),
+                      const SizedBox(height: 8),
+                      Text(
+                        'Username',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          color: GlobalColors.textColor,
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      const SizedBox(height: 8),
+
+                      //Email Input
+                      TextFormGlobal(
+                        controller: passwordController,
+                        text: 'Admin',
+                        obscure: false,
+                        textInputType: TextInputType.emailAddress,
+                      ),
+
+                      const SizedBox(height: 8),
+                      Text(
+                        'Password',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          color: GlobalColors.textColor,
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+
+                      const SizedBox(height: 8),
+                      //Password Input
+                      TextFormGlobal(
+                        controller: passwordController,
+                        text: 'Woakwako099',
+                        textInputType: TextInputType.text,
+                        obscure: false,
+                      ),
+                      const SizedBox(height: 8),
+                      Text(
+                        'Tipe',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          color: GlobalColors.textColor,
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+
+                      const SizedBox(height: 8),
+                      //Password Input
+                      TextFormGlobal(
+                        controller: passwordController,
+                        text: 'Superuser',
+                        textInputType: TextInputType.text,
+                        obscure: false,
+                      ),
+                      const SizedBox(height: 20),
+
+                      // Use ElevatedButton for navigation
+                      Align(
+                        alignment: Alignment.bottomCenter,
+                        child: Padding(
+                          padding: EdgeInsets
+                              .only(), // Sesuaikan jarak ke bawah yang diinginkan
+                          child: ElevatedButton(
+                            onPressed: () {
+                              // Navigate to Dashboard screen
+                              Navigator.pushReplacement(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => Dashboard_admin()),
+                              );
+                            },
+                            style: ElevatedButton.styleFrom(
+                              primary:
+                                  Colors.black, // Warna latar belakang tombol
+                              onPrimary: Colors.white, // Warna teks pada tombol
+                              padding: EdgeInsets.symmetric(
+                                  vertical: 15), // Padding tombol
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10.0),
+                              ),
+                              minimumSize: Size(double.infinity, 50),
+                              alignment: Alignment.center,
+                            ),
+                            child: Text(
+                              'Ubah',
+                              style: TextStyle(
+                                  fontSize: 18), // Gaya teks pada tombol
+                            ),
+                          ),
+                        ),
+                      ),
                     ],
                   ),
                 ),
